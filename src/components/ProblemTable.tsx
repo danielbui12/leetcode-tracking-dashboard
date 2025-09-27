@@ -18,6 +18,7 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
   const [editForm, setEditForm] = useState<Partial<ProblemEntry>>({});
 
   const columns = [
+    { key: 'index' as keyof ProblemEntry, label: '#', sortable: false, width: 'w-16' },
     { key: 'date' as keyof ProblemEntry, label: 'Date', sortable: true, width: 'w-32' },
     { key: 'duration' as keyof ProblemEntry, label: 'Duration (min)', sortable: true, width: 'w-24' },
     { key: 'difficulty' as keyof ProblemEntry, label: 'Difficulty', sortable: true, width: 'w-24' },
@@ -111,8 +112,11 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {sortedProblems.map((problem) => (
+          {sortedProblems.map((problem, index) => (
             <tr key={problem.id} className="hover:bg-gray-50">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                {problems.length - index}
+              </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                 {editingId === problem.id ? (
                   <input
