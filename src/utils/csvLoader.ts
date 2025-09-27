@@ -15,10 +15,16 @@ export interface CSVRow {
 
 export const loadCSVData = async (): Promise<ProblemEntry[]> => {
   try {
-    console.log('Loading CSV data from /data/leetcode-data.csv');
+    // Get the base path from the current location or use default
+    const basePath = window.location.pathname.includes('/leetcode-tracking/') 
+      ? '/leetcode-tracking' 
+      : '';
+    const csvPath = `${basePath}/data/leetcode-data.csv`;
+    
+    console.log('Loading CSV data from', csvPath);
 
     // Fetch the CSV file from the public directory
-    const response = await fetch('/data/leetcode-data.csv');
+    const response = await fetch(csvPath);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch CSV: ${response.status} ${response.statusText}`);
