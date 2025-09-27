@@ -100,6 +100,21 @@ function App() {
     });
   };
 
+  const handleNoNeedToRedo = (id: string) => {
+    setProblems(prev => {
+      const updatedProblems = prev.map(problem =>
+        problem.id === id
+          ? { ...problem, redo: 'Easy' as const, date: new Date() } // Update redo value to Easy
+          : problem
+      );
+
+      // Update localStorage with the new data
+      saveToLocalStorage(updatedProblems);
+
+      return updatedProblems;
+    });
+  };
+
   const handleExport = () => {
     exportToCSV(problems);
   };
@@ -145,6 +160,7 @@ function App() {
             <ReminderSection
               reminders={reminders}
               onMarkAsRedone={handleMarkAsRedone}
+              onNoNeedToRedo={handleNoNeedToRedo}
             />
 
             <div className="bg-white shadow-sm rounded-lg">

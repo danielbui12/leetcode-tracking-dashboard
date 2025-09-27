@@ -25,7 +25,6 @@ export const calculateReminders = (problems: ProblemEntry[]): ReminderEntry[] =>
     }
 
     // Easy redo: SKIP (as per requirements)
-    console.log(problem.redo, problem.redo === 'Medium', daysSinceSolved, daysSinceSolved > 0, daysSinceSolved, daysSinceSolved % 7 === 0);
 
     if (isDue) {
       reminders.push({

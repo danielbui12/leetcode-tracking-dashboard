@@ -19,7 +19,7 @@ export const loadFromLocalStorage = (): ProblemEntry[] => {
   try {
     const serializedData = localStorage.getItem(STORAGE_KEY);
     if (!serializedData) return [];
-    
+
     const data = JSON.parse(serializedData);
     return data.map((entry: any) => ({
       ...entry,
@@ -33,18 +33,23 @@ export const loadFromLocalStorage = (): ProblemEntry[] => {
 
 export const exportToCSV = (data: ProblemEntry[]): void => {
   // Convert data to CSV format using Papa Parse
-  const csvData = data.map(entry => ({
-    Date: entry.date.toISOString().split('T')[0],
-    'Duration (minutes)': entry.duration,
-    Difficulty: entry.difficulty,
-    'Problem Title': entry.problemTitle,
-    'Problem URL': entry.problemUrl,
-    'Redo Difficulty': entry.redo,
-    Approach: entry.approach,
-    Notes: entry.notes,
-    'Time Complexity': entry.timeComplexity,
-    'Space Complexity': entry.spaceComplexity
-  }));
+  const csvData = data.map(entry => {
+    // Format date as M/D/YYYY to match the CSV format
+    const date = new Date(entry.date);
+    const formattedDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+
+    return {
+      Date: formattedDate,
+      Duration: entry.duration,
+      Difficulty: entry.difficulty,
+      Problem: entry.problemTitle,
+      Redo: entry.redo,
+      Approach: entry.approach,
+      Notes: entry.notes,
+      'Time Complexity': entry.timeComplexity,
+      'Space Complexity': entry.spaceComplexity
+    };
+  });
 
   const csvContent = Papa.unparse(csvData);
 
@@ -64,22 +69,88 @@ export const importFromCSV = (file: File): Promise<ProblemEntry[]> => {
     Papa.parse(file, {
       header: true,
       skipEmptyLines: true,
+      dynamicTyping: false,
+      transformHeader: (header: string) => {
+        return header.trim()
+      },
+      delimitersToGuess: [',', '\t', '|', ';'],
       complete: (results) => {
         try {
-          const data: ProblemEntry[] = results.data.map((row: any, index: number) => ({
-            id: `imported-${Date.now()}-${index}`,
-            date: new Date(row.Date || new Date()),
-            duration: parseInt(row['Duration (minutes)'] || row.Duration) || 0,
-            difficulty: (row.Difficulty || 'Easy') as 'Easy' | 'Medium' | 'Hard',
-            problemTitle: row['Problem Title'] || row.Problem || '',
-            problemUrl: row['Problem URL'] || '',
-            redo: (row['Redo Difficulty'] || row.Difficulty || 'Easy') as 'Easy' | 'Medium' | 'Hard',
-            approach: row.Approach || '',
-            notes: row.Notes || '',
-            timeComplexity: row['Time Complexity'] || '',
-            spaceComplexity: row['Space Complexity'] || ''
-          }));
-          
+          const rows = results.data;
+          console.log('Importing', rows.length, 'data rows');
+
+          if (results.errors.length > 0) {
+            console.warn('CSV parsing errors:', results.errors);
+          }
+
+          const data: ProblemEntry[] = rows.map((row: any, index: number) => {
+            // Create a basic LeetCode URL from the problem title
+            const problemTitle = row.Problem?.trim() || '';
+            const problemSlug = problemTitle
+              .split('.')[1]
+              ?.trim()
+              .toLowerCase()
+              .replace(/[^a-z0-9\s-]/g, '')
+              .replace(/\s+/g, '-') || 'unknown';
+
+            const problemUrl = `https://leetcode.com/problems/${problemSlug}/`;
+
+            // Parse date - handle M/D/YYYY format in local timezone
+            let date: Date;
+            const dateStr = row.Date?.trim() || '';
+
+            if (dateStr.includes('/')) {
+              // Handle M/D/YYYY or MM/DD/YYYY format - create date in local timezone
+              const [month, day, year] = dateStr.split('/');
+              // Use local timezone by creating date with local time
+              date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day), 0, 0, 0, 0);
+            } else {
+              date = new Date(dateStr);
+            }
+
+            // Validate date and fallback to current date if invalid
+            if (isNaN(date.getTime())) {
+              console.warn(`Invalid date found: "${dateStr}" for problem "${problemTitle}", using current date`);
+              date = new Date();
+            }
+
+            // Clean up difficulty (remove extra spaces)
+            const difficulty = row.Difficulty?.trim() as 'Easy' | 'Medium' | 'Hard' || 'Easy';
+
+            // Handle Redo field - it might be empty or contain difficulty level
+            const redoValue = row.Redo?.trim() || '';
+
+            const redo = (redoValue && ['Easy', 'Medium', 'Hard'].includes(redoValue))
+              ? redoValue as 'Easy' | 'Medium' | 'Hard'
+              : 'Easy'; // Default fallback
+
+            // Parse complexity from a combined field if needed
+            let timeComplexity = row['Time Complexity']?.trim() || '';
+            let spaceComplexity = row['Space Complexity']?.trim() || '';
+
+            // Handle case where both complexities might be in one field (like "O(N),S(N)")
+            if (timeComplexity.includes(',') && !spaceComplexity) {
+              const parts = timeComplexity.split(',');
+              timeComplexity = parts[0]?.trim() || '';
+              spaceComplexity = parts[1]?.trim() || '';
+            }
+
+            return {
+              id: `imported-${Date.now()}-${index}`,
+              date: date,
+              duration: parseInt(row.Duration?.trim()) || 0,
+              difficulty: difficulty,
+              problemTitle: problemTitle,
+              problemUrl: problemUrl,
+              redo: redo,
+              approach: row.Approach?.trim() || '',
+              notes: row.Notes?.trim() || '',
+              timeComplexity: timeComplexity,
+              spaceComplexity: spaceComplexity
+            };
+          });
+
+          console.log('Successfully imported', data.length, 'problems');
           resolve(data);
         } catch (error) {
           reject(error);

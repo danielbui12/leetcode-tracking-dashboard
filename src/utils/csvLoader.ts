@@ -85,12 +85,18 @@ export const loadCSVData = async (): Promise<ProblemEntry[]> => {
       // Clean up difficulty (remove extra spaces)
       const difficulty = row.Difficulty?.trim() as 'Easy' | 'Medium' | 'Hard' || 'Easy';
 
+
       // Handle Redo field - it might be empty or contain difficulty level
       const redoValue = row.Redo?.trim() || '';
 
       const redo = (redoValue && ['Easy', 'Medium', 'Hard'].includes(redoValue))
         ? redoValue as 'Easy' | 'Medium' | 'Hard'
         : 'Easy'; // Default fallback
+
+      if (row.Problem == "450. Delete Node in a BST") {
+        console.log(redo);
+
+      }
 
       // Parse complexity from a combined field if needed
       let timeComplexity = row['Time Complexity']?.trim() || '';

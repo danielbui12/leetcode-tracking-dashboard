@@ -224,7 +224,9 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
                   />
                 ) : (
                   <div className="max-w-xs truncate" title={problem.approach}>
-                    {problem.approach}
+                    <div dangerouslySetInnerHTML={{
+                      __html: problem.approach.replace(/\n/g, "<br/>")
+                    }} />
                   </div>
                 )}
               </td>
@@ -271,7 +273,9 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
                     className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
                   />
                 ) : (
-                  problem.spaceComplexity
+                  <div dangerouslySetInnerHTML={{
+                    __html: problem.spaceComplexity.replace(/\n/g, "<br/>")
+                  }} />
                 )}
               </td>
 

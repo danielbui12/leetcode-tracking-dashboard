@@ -24,7 +24,7 @@ const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAd
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.problemTitle.trim() || !formData.problemUrl.trim()) {
       alert('Please fill in the problem title and URL');
       return;
@@ -124,9 +124,9 @@ const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAd
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-leetcode-green focus:border-transparent"
                 required
               >
-                <option value="Easy">Easy</option>
-                <option value="Medium">Medium</option>
-                <option value="Hard">Hard</option>
+                <option value="Easy">Easy - No need to redo</option>
+                <option value="Medium">Medium - Redo every 7 days</option>
+                <option value="Hard">Hard - Redo every 4 days</option>
               </select>
             </div>
           </div>
@@ -139,7 +139,7 @@ const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAd
               type="text"
               value={formData.problemTitle}
               onChange={(e) => handleChange('problemTitle', e.target.value)}
-              placeholder="e.g., Two Sum"
+              placeholder="e.g., 1. Two Sum"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-leetcode-green focus:border-transparent"
               required
             />
@@ -190,12 +190,12 @@ const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAd
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Time Complexity
               </label>
-              <input
-                type="text"
+              <textarea
                 value={formData.timeComplexity}
                 onChange={(e) => handleChange('timeComplexity', e.target.value)}
-                placeholder="e.g., n, log n, n^2"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-leetcode-green focus:border-transparent"
+                placeholder="e.g., O(n), O(log n), O(n^2)"
+                rows={2}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-leetcode-green focus:border-transparent resize-none"
               />
             </div>
 
@@ -203,12 +203,12 @@ const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAd
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Space Complexity
               </label>
-              <input
-                type="text"
+              <textarea
                 value={formData.spaceComplexity}
                 onChange={(e) => handleChange('spaceComplexity', e.target.value)}
-                placeholder="e.g., 1, n, n^2"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-leetcode-green focus:border-transparent"
+                placeholder="e.g., S(1), S(n), S(n^2)"
+                rows={2}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-leetcode-green focus:border-transparent resize-none"
               />
             </div>
           </div>
