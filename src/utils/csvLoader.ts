@@ -15,10 +15,16 @@ export interface CSVRow {
 
 export const loadCSVData = async (): Promise<ProblemEntry[]> => {
   try {
-    console.log('Loading CSV data from /data/leetcode-data.csv');
+    // Get the base path from the current location or use default
+    const basePath = window.location.pathname.includes('/leetcode-tracking-dashboard/')
+      ? '/leetcode-tracking-dashboard'
+      : '';
+    const csvPath = `${basePath}/data/leetcode-data.csv`;
+
+    console.log('Loading CSV data from', csvPath);
 
     // Fetch the CSV file from the public directory
-    const response = await fetch('/data/leetcode-data.csv');
+    const response = await fetch(csvPath);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch CSV: ${response.status} ${response.statusText}`);
@@ -26,7 +32,6 @@ export const loadCSVData = async (): Promise<ProblemEntry[]> => {
 
     const csvText = await response.text();
     console.log('CSV data loaded successfully, length:', csvText.length);
-    console.log(csvText);
 
     // Use Papa Parse for robust CSV parsing with multi-line support
     const parseResult = Papa.parse<CSVRow>(csvText, {
@@ -34,8 +39,6 @@ export const loadCSVData = async (): Promise<ProblemEntry[]> => {
       skipEmptyLines: true,
       dynamicTyping: false,
       transformHeader: (header: string) => {
-        console.log(header);
-
         return header.trim()
       },
       delimitersToGuess: [',', '\t', '|', ';']

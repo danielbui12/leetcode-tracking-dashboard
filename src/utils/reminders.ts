@@ -6,6 +6,10 @@ export const calculateReminders = (problems: ProblemEntry[]): ReminderEntry[] =>
   const reminders: ReminderEntry[] = [];
 
   problems.forEach(problem => {
+    // trim the hour, minute, second, millisecond
+    problem.date.setHours(0, 0, 0, 0);
+    today.setHours(0, 0, 0, 0);
+
     const daysSinceSolved = differenceInDays(today, problem.date);
 
     let isDue = false;
@@ -22,8 +26,6 @@ export const calculateReminders = (problems: ProblemEntry[]): ReminderEntry[] =>
 
     // Easy redo: SKIP (as per requirements)
     console.log(problem.redo, problem.redo === 'Medium', daysSinceSolved, daysSinceSolved > 0, daysSinceSolved, daysSinceSolved % 7 === 0);
-
-    console.log(isDue);
 
     if (isDue) {
       reminders.push({

@@ -26,7 +26,6 @@ function App() {
 
         try {
           const csvProblems = await loadCSVData();
-          console.log(csvProblems);
 
           if (csvProblems.length > 0) {
             setProblems(csvProblems);
