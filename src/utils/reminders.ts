@@ -1,0 +1,42 @@
+import { ProblemEntry, ReminderEntry } from '../types';
+import { differenceInDays } from 'date-fns';
+
+export const calculateReminders = (problems: ProblemEntry[]): ReminderEntry[] => {
+  const today = new Date();
+  const reminders: ReminderEntry[] = [];
+
+  problems.forEach(problem => {
+    const daysSinceSolved = differenceInDays(today, problem.date);
+
+    let isDue = false;
+
+    // Medium redo: Show if (Today - Problem Date) % 7 == 0 (weekly review)
+    if (problem.redo === 'Medium' && daysSinceSolved > 0 && daysSinceSolved % 7 === 0) {
+      isDue = true;
+    }
+
+    // Hard redo: Show if (Today - Problem Date) % 4 == 0 (every 4 days)
+    if (problem.redo === 'Hard' && daysSinceSolved > 0 && daysSinceSolved % 4 === 0) {
+      isDue = true;
+    }
+
+    // Easy redo: SKIP (as per requirements)
+    console.log(problem.redo, problem.redo === 'Medium', daysSinceSolved, daysSinceSolved > 0, daysSinceSolved, daysSinceSolved % 7 === 0);
+
+    console.log(isDue);
+
+    if (isDue) {
+      reminders.push({
+        id: problem.id,
+        problemTitle: problem.problemTitle,
+        problemUrl: problem.problemUrl,
+        originalDifficulty: problem.difficulty,
+        redoDifficulty: problem.redo,
+        daysSinceSolved,
+        isDue
+      });
+    }
+  });
+
+  return reminders.sort((a, b) => b.daysSinceSolved - a.daysSinceSolved);
+};

@@ -1,0 +1,242 @@
+Date,Duration,Difficulty,Problem,Redo,Approach,Notes,Time Complexity,Space Complexity
+9/11/2025,10,Easy,1768. Merge Strings Alternately,Easy,Array,"Good: 
+Bad: 
+Delta: ",O(N),S(N)
+9/24/2025,10,Easy,121. Best Time to Buy and Sell Stock,Easy,Array,"Good: 
+Bad: Thinking too complicated
+Delta: ",O(N),S(1)
+9/11/2025,20,Easy,1071. Greatest Common Divisor of Strings,Medium,Array,"Good:
+Bad:
+Delta: can find the gcd then slice string. Because it is a must that 2 string have the same divisor","O(min(M,N) * (M + N))",S(N)
+9/12/2025,5,Easy,1431. Kids With the Greatest Number of Candies,Easy,Array,"Good:
+Bad:
+Delta:",,
+9/12/2025,5,Easy,605. Can Place Flowers,Easy,Array,"Good:
+Bad:
+Delta:",O(N),S(1)
+9/12/2025,5,Easy,345. Reverse Vowels of a String,Easy,Array,"Good:
+Bad:
+Delta: Can using 2 Pointer to solve",O(N),S(n)
+9/12/2025,4,Medium,151. Reverse Words in a String,Easy,Array,"Good:
+Bad:
+Delta:",O(N),S(n)
+9/13/2025,15,Medium,334. Increasing Triplet Subsequence,Easy,Array - 2 Pointer,"Good:
+Bad:
+Delta:",O(N),S(n)
+9/13/2025,20,Medium,443. String Compression,Medium,Array,"Good:
+Bad: Dont understand output format
+Delta:",O(N),S(1)
+9/14/2025,20,Easy,283. Move Zeroes,Medium,2 Pointer,"Good:
+Bad: Think simple
+Delta:",O(N),S(1)
+9/14/2025,3,Easy,392. Is Subsequence,Easy,2 Pointer,"Good:
+Bad:
+Delta:",O(N),S(1)
+9/15/2025,10,Medium,11. Container With Most Water,Easy,2 Pointer,"Good:
+Bad: No idea
+Delta: Please stay calm, and think about the condition to move pointer",O(N),S(1)
+9/15/2025,18,Medium,1679. Max Number of K-Sum Pairs,Easy,2 Pointer / Hashmap,"Good: Without support, I can do using hashmap
+Bad:
+Delta: Can use additional operation like sorting, etc","Hashmap: O(N)
+2 Pointer: O(NlogN)","Hashmap: S(N)
+2 Pointer: S(1)"
+9/15/2025,5,Easy,2215. Find the Difference of Two Arrays,Easy,Set,"Good:
+Bad:
+Delta: Can use array methods to reduce code length and space usage",O(N + M),S(N + M)
+9/15/2025,5,Easy,1207. Unique Number of Occurrences,Easy,Hashmap & Set,"Good:
+Bad:
+Delta:",O(N),S(2N)
+9/15/2025,19,Medium,1657. Determine if Two Strings Are Close,Easy,Hashmap & Set,"Good: make it done myself
+Bad:
+Delta: Issue contains trick, not really like this",O(N),S(M+N)
+9/15/2025,15,Medium,2352. Equal Row and Column Pairs,Easy,Hashmap,"Good:
+Bad: Try to understand the question correctly before coding
+Delta:",O(N^2),S(N)
+9/15/2025,10,Easy,682. Baseball Game,Easy,Stack,"Good:
+Bad:
+Delta:",O(N),S(N)
+9/16/2025,10,Easy,20. Valid Parentheses,Easy,Stack,"Good:
+Bad:
+Delta:",O(N),S(N)
+9/16/2025,4,Medium,2390. Removing Stars From a String,Easy,Stack,"Good:
+Bad:
+Delta:",O(N),S(N)
+9/16/2025,40,Medium,735. Asteroid Collision,Medium,Stack,"Good: Understand problem
+Bad: Confuse on condition, coding
+Delta: 
++ Retry 1: Did not remember the solution but was able to solve it myself. Good job!!!!",O(N),S(N)
+9/16/2025,60,Medium,394. Decode String,Medium,Stack,"Good:
+Bad: Confusing myself
+Delta: Global iterator pointer
++ Retry 1: Was able to solve it myself. but still a bit depend on memory",O(N),S(M)
+9/16/2025,10,Medium,739. Daily Temperatures,Easy,Stack,"Good:
+Bad:
+Delta: Monotonic Stack",O(N),S(N)
+9/17/2025,7,Medium,150. Evaluate Reverse Polish Notation,Easy,Stack,"Good:
+Bad:
+Delta:",O(N),S(N)
+9/17/2025,15,Easy,933. Number of Recent Calls,Easy,Queue,"Good:
+Bad:
+Delta:",O(N),S(N)
+9/17/2025,60,Medium,649. Dota2 Senate,Medium,Queue,"Good:
+Bad:
+Delta: 2 queue approach
++ Retry 1: Understand problem clearly based on memory",O(N),S(N)
+9/18/2025,10,Easy,206. Reverse Linked List,Easy,Linked List,"Good:
+Bad: Think about condition
+Delta: ",O(N),S(1)
+9/18/2025,2,Easy,83. Remove Duplicates from Sorted List,Easy,Linked List,"Good:
+Bad:
+Delta:",O(N),S(1)
+9/18/2025,23,Easy,21. Merge Two Sorted Lists,Easy,Linked List,"Good:
+Bad:
+Delta: Linked List can be append with 1 `if`, not necessary to iterate all elements",O(N),S(1)
+9/18/2025,10,Easy,876. Middle of the Linked List,Easy,Linked List,"Good:
+Bad:
+Delta: 2 Pointer in Linked List ""Slow and Fast""",O(N),S(1)
+9/18/2025,10,Easy,141. Linked List Cycle,Easy,Linked List,"Good:
+Bad:
+Delta: 2 Pointer in Linked List ""Slow and Fast""",O(N),S(1)
+9/19/2025,12,Medium,2095. Delete the Middle Node of a Linked List,Easy,Linked List,"Good:
+Bad:
+Delta: 2 Pointer in Linked List ""Slow and Fast""",O(N),S(1)
+9/19/2025,34,Medium,328. Odd Even Linked List,Medium,Linked List,"Good:
+Bad: Should never use counter in linked list. always think about 2 pointer instead
+Delta:
++ Retry 1: feeling bad, cannot even come with solution",O(N),S(1)
+9/19/2025,10,Medium,2130. Maximum Twin Sum of a Linked List,Easy,Linked List,"Good:
+Bad:
+Delta:",O(N),S(N/2) = S(N)
+9/19/2025,6,Easy,374. Guess Number Higher or Lower,Easy,Binary Search,"Good:
+Bad:
+Delta:",O(logN),S(1)
+9/19/2025,30,Medium,2300. Successful Pairs of Spells and Potions,Medium,Binary Search,"Good:
+Bad:
+Delta: May be consider R = length of array.
+Try pseudo code all example cases before coding
++ Retry 1: Completed smoothly",O(NlogM + MlogM),S(N)
+9/20/2025,30,Medium,162. Find Peak Element,Easy,Binary Search,"Good: I can solve it without look at solution
+Bad:
+Delta: Think about condition simply
++ Retry 1: Solved smoothly, thinking outloud and ask question",O(logN),S(1)
+9/20/2025,43,Medium,875. Koko Eating Bananas,Medium,Binary Search,"Good:
+Bad: Tricky question, not clear at all, need to determine what is ""output"" and how to find ""output""
+Delta:
++ Retry 1: Solved not smoothly, but figure the problem by myself. Good job!!",O(MlogN),S(1)
+9/20/2025,13,Easy,1732. Find the Highest Altitude,Easy,Prefix Sum,"Good:
+Bad:
+Delta:",O(N),S(1)
+9/20/2025,15,Easy,724. Find Pivot Index,Easy,Prefix Sum,"Good:
+Bad:
+Delta:",O(N),S(1)
+9/20/2025,15,Easy,643. Maximum Average Subarray I,Easy,Fixed Size Sliding Window,"Good:
+Bad:
+Delta:",O(N),S(1)
+9/20/2025,10,Medium,1456. Maximum Number of Vowels in a Substring of Given Length,Easy,Fixed Size Sliding Window,"Good:
+Bad:
+Delta:",O(N),S(1)
+9/20/2025,50,Medium,1004. Max Consecutive Ones III,Medium,Variable Size Sliding Window,"Good: Having idea to solve
+Bad: But idea is always too complex, make it simple
+Delta: Using 2 pointer
++ Retry 1: Solved not smoothly, but a bit depend on memory, thinking outloud, try to behave like in the interview",O(N),S(1)
+9/20/2025,10,Medium,1493. Longest Subarray of 1's After Deleting One Element,Easy,Variable Size Sliding Window,"Good: Having idea to solve using 2 pointer
+Bad:
+Delta: ",O(N),S(1)
+9/20/2025,20,Medium,3. Longest Substring Without Repeating Characters,Easy,Variable Size Sliding Window,"Good:
+Bad:
+Delta: ",O(N),S(N)
+9/21/2025,47,Medium,424. Longest Repeating Character Replacement,Medium,Variable Size Sliding Window,"Good: Having correct approach
+Bad: Misunderstanding the issue input
+Delta: ",O(N),S(1)
+9/21/2025,15,Medium,209. Minimum Size Subarray Sum,Medium,Variable Size Sliding Window,"Good:
+Bad: Not read the issue carefully
+Delta: Using hash table of 26 english character",O(N),S(1)
+9/21/2025,23,Medium,567. Permutation in String,Medium,Fixed Size Sliding Window,"Good:
+Bad: Not read the issue carefully
+Delta: Using hash table of 26 english character",O(N),S(1)
+9/21/2025,4,Easy,104. Maximum Depth of Binary Tree,Easy,Binary Tree - DFS,"Good:
+Bad:
+Delta:",O(N),S(N)
+9/21/2025,4,Easy,872. Leaf-Similar Trees,Easy,Binary Tree - DFS,"Good:
+Bad:
+Delta:",O(N),S(N)
+9/21/2025,4,Easy,100. Same Tree,Easy,Binary Tree - DFS,"Good:
+Bad:
+Delta:",O(N),S(N)
+9/21/2025,30,Easy,101. Symmetric Tree,Medium,Binary Tree - DFS,"Good:
+Bad: was not able to think about solution
+Delta: thinking about the traversal when woring with tree",O(N),S(N)
+9/21/2025,30,Easy,110. Balanced Binary Tree,Medium,Binary Tree - DFS,"Good:
+Bad: was not able to think about solution
+Delta: thinking about the traversal when woring with tree",O(N),S(H)
+9/21/2025,30,Easy,112. Path Sum,Medium,Binary Tree - DFS,"Good: having correct approach
+Bad: wrong on condition
+Delta: thinking about condition of the leaf",O(N),S(N)
+9/21/2025,24,Easy,543. Diameter of Binary Tree,Medium,Binary Tree - DFS,"Good:
+Bad: Not read the issue carefully
+Delta:",O(N),"S(H = N) worst skewed tree
+S(H = log(N)) best balanced tree"
+9/22/2025,14,Medium,1448. Count Good Nodes in Binary Tree,Medium,Binary Tree - DFS,"Good: Logical thinking is better than yesterday
+Bad:
+Delta:",O(N),S(H = N) worst skewed tree
+9/22/2025,26,Medium,113. Path Sum II,Medium,Binary Tree - DFS + Backtracking,"Good: Logical thinking is better than yesterday
+Bad: Need to study array syntax
+Delta: even able to solve variant of DFS topic",O(N),S(H)
+9/22/2025,32,Medium,437. Path Sum III,Medium,"Binary Tree - DFS + Prefix Sum
+Binary Tree - DFS + Backtracking","Good: Having correct approach
+Bad: Think out of the box. Like hash table, hash map, ...
+Delta: even able to solve variant of DFS topic","O(N)  for Binary Tree - DFS + Prefix Sum
+O(N^2)  for Binary Tree - DFS + Backtracking",S(N)
+9/22/2025,60,Medium,1372. Longest ZigZag Path in a Binary Tree,Medium,Binary Tree - DFS - Dynamic Programming,"Good:
+Bad:
+Delta: Mark traversal using tupple of counting",O(N),S(H)
+9/23/2025,81,Medium,236. Lowest Common Ancestor of a Binary Tree,Medium,Binary Tree - DFS,"Good:
+Bad: Wrong solution, confusing at all
+Delta:",O(N),S(H)
+9/23/2025,13,Medium,102. Binary Tree Level Order Traversal,Easy,Binary Tree - BFS,"Good:
+Bad:
+Delta: Need to understanding the for and while loop to optimise traversal and space usage",O(N),S(N)
+9/24/2025,10,Medium,199. Binary Tree Right Side View,Easy,Binary Tree - BFS,"Good:
+Bad:
+Delta: Need to evaluate time, space complexity comprehensively. in worst, normal, best scenarios",O(N),"S(H) with H is the height of the tree
+- O(n) - Worst case for a skewed tree
+- O(log n) - Best case for a balanced tree."
+9/24/2025,8,Medium,1161. Maximum Level Sum of a Binary Tree,Easy,Binary Tree - BFS,"Good:
+Bad:
+Delta: Need to evaluate time, space complexity comprehensively. in worst, normal, best scenarios",O(N),S(W) W is the width of the tree
+9/24/2025,60,Medium,450. Delete Node in a BST,Hard,Binary Search Tree,"Good: Thinking about edge cases
+Bad: Was not able to have solution
+Delta:",O(N),S(H) H is the height of the tree
+9/25/2025,18,Easy,1046. Last Stone Weight,Easy,Heap - Max Heap,"Good:
+Bad:
+Delta:",O(N * logN),S(N)
+9/25/2025,7,Medium,215. Kth Largest Element in an Array,Easy,Heap - Min Heap,"Good:
+Bad:
+Delta:",O(N * logK),S(K)
+9/25/2025,30,Medium,2336. Smallest Number in Infinite Set,Medium,Heap - Min Heap,"Good:
+Bad: Not understand the question
+Delta:",O(logK),S(K)
+9/26/2025,43,Medium,2542. Maximum Subsequence Score,Hard,Heap - Min Heap,"Good:
+Bad:
+Delta:",O(N * logN),S(N)
+9/26/2025,39,Medium,2462. Total Cost to Hire K Workers,Medium,Heap - 2 Min Heap,"Good:
+Bad: not think about edge cases
+Delta: Fuck this bull shit description",O(K * candidates * log(candidates)),S(candidates)
+9/26/2025,50,Medium,17. Letter Combinations of a Phone Number,Medium,Recursive Backtracking,"Good:
+Bad: so confuse
+Delta: ",O(K^2) K is number of characters of letter,S(N)
+9/26/2025,,Medium,78. Subsets,Medium,Recursive Backtracking,"Good:
+Bad:
+Delta: ",O(2^N),S(N)
+9/26/2025,,Medium,46. Permutations,Medium,Recursive Backtracking,"Good:
+Bad: Dont know how to do
+Delta: ",O(N * N!),S(N)
+9/27/2025,27,Medium,77. Combinations,Easy,Recursive Backtracking,"Good: Resolved smoothly
+Bad:
+Delta:  If input is a number, just start from it and substrate to 0, it is more optiomal","O(N choose K) = O(C(N,K))",S(N)
+9/27/2025,13,Medium,39. Combination Sum,Easy,Recursive Backtracking,"Good:
+Bad:
+Delta:",O(N^T),S(N)
+9/27/2025,43,Medium,216. Combination Sum III,Medium,Recursive Backtracking,"Good:
+Bad:
+Delta:","O(9 choose K) = O(C(9,K))",S(N)
