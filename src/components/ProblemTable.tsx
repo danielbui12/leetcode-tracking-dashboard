@@ -251,14 +251,14 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
                 )}
               </td>
 
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <td className="px-6 py-4 text-sm text-gray-900">
                 {editingId === problem.id ? (
-                  <input
-                    type="text"
+                  <textarea
                     value={editForm.timeComplexity || ''}
                     onChange={(e) => setEditForm(prev => ({ ...prev, timeComplexity: e.target.value }))}
-                    placeholder="e.g., n, log n"
+                    placeholder="e.g., O(n), O(log n)"
                     className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
+                    rows={2}
                   />
                 ) : (
                   <div dangerouslySetInnerHTML={{
@@ -267,14 +267,14 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
                 )}
               </td>
 
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+              <td className="px-6 py-4 text-sm text-gray-900">
                 {editingId === problem.id ? (
-                  <input
-                    type="text"
+                  <textarea
                     value={editForm.spaceComplexity || ''}
                     onChange={(e) => setEditForm(prev => ({ ...prev, spaceComplexity: e.target.value }))}
-                    placeholder="e.g., 1, n, n^2"
+                    placeholder="e.g., O(1), O(n), O(n^2)"
                     className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
+                    rows={2}
                   />
                 ) : (
                   <div dangerouslySetInnerHTML={{
