@@ -2,7 +2,7 @@
 
 A comprehensive dashboard for tracking LeetCode problem solving progress with smart reminders and data management features.
 
-![](./public/data/demo.png)
+![](./assets/dashboard.png)
 
 ## Features
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import { ProblemEntry } from '../types';
 
@@ -6,9 +6,10 @@ interface AddProblemModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAdd: (problem: Omit<ProblemEntry, 'id'>) => void;
+  currentProblem?: any;
 }
 
-const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAdd }) => {
+const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAdd, currentProblem }) => {
   const [formData, setFormData] = useState({
     date: new Date().toISOString().split('T')[0],
     duration: 0,
@@ -21,6 +22,19 @@ const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAd
     timeComplexity: '',
     spaceComplexity: ''
   });
+
+  // Pre-fill form when currentProblem changes
+  useEffect(() => {
+    if (currentProblem && isOpen) {
+      setFormData(prev => ({
+        ...prev,
+        problemTitle: currentProblem.problemTitle || '',
+        problemUrl: currentProblem.problemUrl || '',
+        difficulty: currentProblem.difficulty || 'Easy',
+        notes: currentProblem.description || ''
+      }));
+    }
+  }, [currentProblem, isOpen]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
