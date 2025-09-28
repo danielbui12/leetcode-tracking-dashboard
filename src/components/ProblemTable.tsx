@@ -18,17 +18,17 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
   const [editForm, setEditForm] = useState<Partial<ProblemEntry>>({});
 
   const columns = [
-    { key: 'index' as keyof ProblemEntry, label: '#', sortable: false, width: 'w-16' },
-    { key: 'date' as keyof ProblemEntry, label: 'Date', sortable: true, width: 'w-32' },
-    { key: 'duration' as keyof ProblemEntry, label: 'Duration (min)', sortable: true, width: 'w-24' },
-    { key: 'difficulty' as keyof ProblemEntry, label: 'Difficulty', sortable: true, width: 'w-24' },
-    { key: 'problemTitle' as keyof ProblemEntry, label: 'Problem', sortable: true, width: 'w-48' },
-    { key: 'redo' as keyof ProblemEntry, label: 'Redo', sortable: true, width: 'w-20' },
-    { key: 'approach' as keyof ProblemEntry, label: 'Approach', sortable: false, width: 'w-64' },
-    { key: 'notes' as keyof ProblemEntry, label: 'Notes', sortable: false, width: 'w-64' },
-    { key: 'timeComplexity' as keyof ProblemEntry, label: 'Time', sortable: true, width: 'w-20' },
-    { key: 'spaceComplexity' as keyof ProblemEntry, label: 'Space', sortable: true, width: 'w-20' },
-    { key: 'actions' as keyof ProblemEntry, label: 'Actions', sortable: false, width: 'w-24' }
+    { key: 'index' as keyof ProblemEntry, label: '#', sortable: false },
+    { key: 'date' as keyof ProblemEntry, label: 'Date', sortable: true },
+    { key: 'duration' as keyof ProblemEntry, label: 'Duration (min)', sortable: true },
+    { key: 'difficulty' as keyof ProblemEntry, label: 'Difficulty', sortable: true },
+    { key: 'problemTitle' as keyof ProblemEntry, label: 'Problem', sortable: true },
+    { key: 'redo' as keyof ProblemEntry, label: 'Redo', sortable: true },
+    { key: 'approach' as keyof ProblemEntry, label: 'Approach', sortable: false },
+    { key: 'notes' as keyof ProblemEntry, label: 'Notes', sortable: false },
+    { key: 'timeComplexity' as keyof ProblemEntry, label: 'Time', sortable: true },
+    { key: 'spaceComplexity' as keyof ProblemEntry, label: 'Space', sortable: true },
+    { key: 'actions' as keyof ProblemEntry, label: 'Actions', sortable: false }
   ];
 
   const handleSort = (key: keyof ProblemEntry) => {
@@ -86,7 +86,7 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
             {columns.map((column) => (
               <th
                 key={column.key}
-                className={`px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ${column.width}`}
+                className={"px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"}
               >
                 <div className="flex items-center space-x-1">
                   <span>{column.label}</span>
@@ -227,7 +227,7 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
                     rows={2}
                   />
                 ) : (
-                  <div className="max-w-xs truncate" title={problem.approach}>
+                  <div className="whitespace-pre-wrap break-words">
                     <div dangerouslySetInnerHTML={{
                       __html: problem.approach.replace(/\n/g, "<br/>")
                     }} />
@@ -241,11 +241,11 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
                     value={editForm.notes || ''}
                     onChange={(e) => setEditForm(prev => ({ ...prev, notes: e.target.value }))}
                     placeholder="Notes (Good, Bad, Delta)"
-                    className="w-full px-2 py-1 border border-gray-300 rounded text-sm"
+                    className={`w-96 px-2 py-1 border border-gray-300 rounded text-sm`}
                     rows={2}
                   />
                 ) : (
-                  <div className="max-w-xs truncate" title={problem.notes} dangerouslySetInnerHTML={{
+                  <div className="w-64 whitespace-pre-wrap break-words" dangerouslySetInnerHTML={{
                     __html: problem.notes.replace(/\n/g, "<br/>")
                   }} />
                 )}
@@ -261,7 +261,7 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
                     rows={2}
                   />
                 ) : (
-                  <div dangerouslySetInnerHTML={{
+                  <div className="whitespace-pre-wrap break-words" dangerouslySetInnerHTML={{
                     __html: problem.timeComplexity.replace(/\n/g, "<br/>")
                   }} />
                 )}
@@ -277,7 +277,7 @@ const ProblemTable: React.FC<ProblemTableProps> = ({ problems, onUpdate, onDelet
                     rows={2}
                   />
                 ) : (
-                  <div dangerouslySetInnerHTML={{
+                  <div className="whitespace-pre-wrap break-words" dangerouslySetInnerHTML={{
                     __html: problem.spaceComplexity.replace(/\n/g, "<br/>")
                   }} />
                 )}
