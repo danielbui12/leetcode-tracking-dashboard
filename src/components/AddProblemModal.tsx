@@ -22,6 +22,29 @@ const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAd
     spaceComplexity: ''
   });
 
+  // Function to convert problem title to LeetCode URL
+  const generateProblemUrl = (title: string): string => {
+    if (!title.trim()) return '';
+
+    // Remove problem number and clean the title
+    const cleanTitle = title
+      .replace(/^\d+\.\s*/, '') // Remove leading number and dot
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '') // Remove special characters except spaces and hyphens
+      .replace(/\s+/g, '-') // Replace spaces with hyphens
+      .replace(/-+/g, '-') // Replace multiple hyphens with single hyphen
+      .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+
+    return `https://leetcode.com/problems/${cleanTitle}`;
+  };
+
+  // Default note template
+  const getDefaultNotes = (): string => {
+    return `Good: 
+Bad: 
+Delta: `;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -51,7 +74,27 @@ const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAd
   };
 
   const handleChange = (field: string, value: any) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData(prev => {
+      const newData = { ...prev, [field]: value };
+
+      // Auto-fill URL and notes when problem title changes
+      if (field === 'problemTitle') {
+        const generatedUrl = generateProblemUrl(value);
+        const defaultNotes = getDefaultNotes();
+
+        // Only auto-fill if URL is empty or if it looks like it was auto-generated
+        if (!prev.problemUrl || prev.problemUrl.startsWith('https://leetcode.com/problems/')) {
+          newData.problemUrl = generatedUrl;
+        }
+
+        // Only auto-fill notes if they're empty or contain the default template
+        if (!prev.notes) {
+          newData.notes = defaultNotes;
+        }
+      }
+
+      return newData;
+    });
   };
 
   if (!isOpen) return null;
