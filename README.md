@@ -10,9 +10,9 @@ A comprehensive dashboard for tracking LeetCode problem solving progress with sm
 - **Problem Table**: Sortable data table with all required columns (Date, Duration, Difficulty, Problem, Redo, Approach, Notes, Time/Space Complexity)
 - **CRUD Operations**: Add, edit, and delete problem entries with inline editing
 - **Smart Reminder System**: Automatic reminders for problems due for review based on difficulty:
-  - Medium Redo: Every 7 days
-  - Hard Redo: Every 4 days
-  - Easy Redo: Every 14 days (bonus feature)
+  - Medium Redo: Every 14 days
+  - Hard Redo: Every 7 days
+  - Easy Redo: No need to redo
 - **Data Management**: 
   - Local storage persistence
   - CSV export/import functionality

@@ -40,9 +40,7 @@ const AddProblemModal: React.FC<AddProblemModalProps> = ({ isOpen, onClose, onAd
 
   // Default note template
   const getDefaultNotes = (): string => {
-    return `Good: 
-Bad: 
-Delta: `;
+    return ``;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -168,8 +166,8 @@ Delta: `;
                 required
               >
                 <option value="Easy">Easy - No need to redo</option>
-                <option value="Medium">Medium - Redo every 7 days</option>
-                <option value="Hard">Hard - Redo every 4 days</option>
+                <option value="Medium">Medium - Redo every 14 days</option>
+                <option value="Hard">Hard - Redo every 7 days</option>
               </select>
             </div>
           </div>
@@ -209,7 +207,7 @@ Delta: `;
             <textarea
               value={formData.approach}
               onChange={(e) => handleChange('approach', e.target.value)}
-              placeholder="Describe your solution approach..."
+              placeholder="e.g., Two Pointers, Sliding Window, Binary Search, DFS, BFS, Dynamic Programming..."
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-leetcode-green focus:border-transparent"
               rows={3}
             />
@@ -217,7 +215,7 @@ Delta: `;
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Notes (Good, Bad, Delta)
+              Notes
             </label>
             <textarea
               value={formData.notes}

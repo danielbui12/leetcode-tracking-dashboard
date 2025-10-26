@@ -30,8 +30,8 @@ Create a data table with the following columns:
 Display a reminder section above the table that shows problems due for review based on:
 
 - **Easy Redo:**  SKIP
-- **Medium Redo:** Show if `(Today - Problem Date) % 7 == 0` (weekly review)
-- **Hard Redo:** Show if `(Today - Problem Date) % 4 == 0` (every 4 days)
+- **Medium Redo:** Show if `(Today - Problem Date) % 14 == 0` (every 14 days)
+- **Hard Redo:** Show if `(Today - Problem Date) % 7 == 0` (every 7 days)
 
 ### 4. Data Management
 - **Export:** Button to export all data to CSV format

@@ -14,13 +14,13 @@ export const calculateReminders = (problems: ProblemEntry[]): ReminderEntry[] =>
 
     let isDue = false;
 
-    // Medium redo: Show if (Today - Problem Date) % 7 == 0 (weekly review)
-    if (problem.redo === 'Medium' && daysSinceSolved > 0 && daysSinceSolved % 7 === 0) {
+    // Medium redo: Show if (Today - Problem Date) % 14 == 0 (every 14 days)
+    if (problem.redo === 'Medium' && daysSinceSolved > 0 && daysSinceSolved % 14 === 0) {
       isDue = true;
     }
 
-    // Hard redo: Show if (Today - Problem Date) % 4 == 0 (every 4 days)
-    if (problem.redo === 'Hard' && daysSinceSolved > 0 && daysSinceSolved % 4 === 0) {
+    // Hard redo: Show if (Today - Problem Date) % 7 == 0 (every 7 days)
+    if (problem.redo === 'Hard' && daysSinceSolved > 0 && daysSinceSolved % 7 === 0) {
       isDue = true;
     }
 

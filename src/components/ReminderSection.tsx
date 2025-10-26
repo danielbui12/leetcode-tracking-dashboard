@@ -48,7 +48,7 @@ const ReminderSection: React.FC<ReminderSectionProps> = ({ reminders, onMarkAsRe
                   </div>
                   <div className="flex items-center space-x-1 text-yellow-700">
                     <span className="text-lg">→</span>
-                    <span className="font-bold">4 days</span>
+                    <span className="font-bold">7 days</span>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3 bg-white p-2 rounded-md border border-yellow-200">
@@ -58,12 +58,12 @@ const ReminderSection: React.FC<ReminderSectionProps> = ({ reminders, onMarkAsRe
                   </div>
                   <div className="flex items-center space-x-1 text-yellow-700">
                     <span className="text-lg">→</span>
-                    <span className="font-bold">7 days</span>
+                    <span className="font-bold">14 days</span>
                   </div>
                 </div>
               </div>
               <div className="mt-2 text-yellow-700 text-xs leading-relaxed">
-                <span className="font-medium">💡 Explanation:</span> Problems marked as "Hard" to redo need more frequent review (every 4 days) to master the concepts, while "Medium" difficulty problems can be reviewed less frequently (every 7 days) as they're easier to retain.
+                <span className="font-medium">💡 Explanation:</span> Problems marked as "Hard" to redo need more frequent review (every 7 days) to master the concepts, while "Medium" difficulty problems can be reviewed less frequently (every 14 days) as they're easier to retain.
               </div>
             </div>
             <div className="space-y-2">
